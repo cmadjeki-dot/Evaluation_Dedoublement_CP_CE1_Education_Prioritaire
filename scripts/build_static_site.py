@@ -42,7 +42,9 @@ INDICATEURS_PATH = TABLES_DIR / "indicateurs_decisionnels.csv"
 GITHUB_REPO_URL = (
     "https://github.com/cmadjeki-dot/Evaluation_Dedoublement_CP_CE1_Education_Prioritaire"
 )
-DASHBOARD_PUBLIC_URL = "https://votre-espace-streamlit.streamlit.app"
+DASHBOARD_PUBLIC_URL = (
+    "https://evaluationdedoublementcpce1educationprioritaire-dsqnzzhphhk9qw.streamlit.app/"
+)
 
 CONTEXTE_PROJET = (
     "Effet du dédoublement des classes de CP/CE1 en éducation prioritaire sur les performances "
