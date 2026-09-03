@@ -1,0 +1,20 @@
+[2026-09-03T08:25:08.727286+00:00] === DÉBUT DU PIPELINE ===
+[2026-09-03T08:25:08.728879+00:00] Journal détaillé : C:\Users\admin\Desktop\PROJET STATISTIQUE PUBLIC B\outputs\logs\pipeline_20260903_082508.log
+[2026-09-03T08:25:08.729644+00:00] DÉBUT — Acquisition des données brutes
+[2026-09-03T08:25:08.847663+00:00] SUCCÈS — Acquisition des données brutes (durée : 0.12s)
+[2026-09-03T08:25:08.848465+00:00] DÉBUT — Contrôle qualité
+[2026-09-03T08:25:09.113049+00:00] SUCCÈS — Contrôle qualité (durée : 0.26s)
+[2026-09-03T08:25:09.113695+00:00] DÉBUT — Nettoyage et préparation (interim + processed)
+[2026-09-03T08:25:09.463069+00:00] SUCCÈS — Nettoyage et préparation (interim + processed) (durée : 0.35s)
+[2026-09-03T08:25:09.463781+00:00] DÉBUT — Analyses, modélisation et indicateurs (tables)
+[2026-09-03T08:25:21.244740+00:00] SUCCÈS — Analyses, modélisation et indicateurs (tables) (durée : 11.78s)
+[2026-09-03T08:25:21.245319+00:00] DÉBUT — Génération des figures
+[2026-09-03T08:25:33.008924+00:00] SUCCÈS — Génération des figures (durée : 11.76s)
+[2026-09-03T08:25:33.009595+00:00] DÉBUT — Génération du rapport final
+[2026-09-03T08:25:34.424307+00:00] SUCCÈS — Génération du rapport final (durée : 1.41s)
+[2026-09-03T08:25:34.424889+00:00] DÉBUT — Construction du site statique
+[2026-09-03T08:25:34.679161+00:00] SUCCÈS — Construction du site statique (durée : 0.25s)
+[2026-09-03T08:25:34.679831+00:00] DÉBUT — Validation finale des artefacts
+[2026-09-03T08:25:34.684093+00:00] SUCCÈS — Validation finale des artefacts (durée : 0.00s)
+[2026-09-03T08:25:34.685137+00:00] Synthèse des artefacts validés : {'figures_outputs': 12, 'tables_outputs': 25, 'rapports_outputs': 6, 'figures_site': 12, 'tables_site': 25}
+[2026-09-03T08:25:34.685946+00:00] === PIPELINE : OK ===

@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-09-03T08:25:08.906631+00:00",
+  "n_rows": 5250,
+  "n_columns": 22,
+  "columns": [
+    "annee",
+    "ecole_id",
+    "academie",
+    "departement",
+    "niveau",
+    "statut",
+    "rep",
+    "rep_plus",
+    "education_prioritaire",
+    "effectif_eleves",
+    "nombre_classes",
+    "taille_moyenne_classe",
+    "dedoublement",
+    "ips",
+    "score_francais",
+    "score_mathematiques",
+    "score_global",
+    "taux_maitrise_francais",
+    "taux_maitrise_mathematiques",
+    "variable_cible",
+    "source",
+    "source_url"
+  ],
+  "summary_counts": {
+    "CRITIQUE": 0,
+    "IMPORTANT": 1,
+    "MINEUR": 10
+  },
+  "issues": [
+    {
+      "code": "DUPLICATE_ROWS",
+      "severity": "MINEUR",
+      "variable": null,
+      "description": "Lignes strictement identiques sur l'ensemble des colonnes.",
+      "n_affected": 0,
+      "details": {
+        "pourcentage": 0.0
+      }
+    },
+    {
+      "code": "DUPLICATE_IDENTIFIERS",
+      "severity": "MINEUR",
+      "variable": "annee, ecole_id, niveau",
+      "description": "Combinaisons d'identifiant logique (année, école, niveau) apparaissant plusieurs fois.",
+      "n_affected": 0,
+      "details": {
+        "colonnes_utilisees": [
+          "annee",
+          "ecole_id",
+          "niveau"
+        ]
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "effectif_eleves",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'effectif_eleves'.",
+      "n_affected": 10,
+      "details": {
+        "borne_basse": 4.0,
+        "borne_haute": 36.0,
+        "pourcentage": 0.19
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "taille_moyenne_classe",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'taille_moyenne_classe'.",
+      "n_affected": 10,
+      "details": {
+        "borne_basse": 3.055,
+        "borne_haute": 29.575,
+        "pourcentage": 0.19
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "score_francais",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'score_francais'.",
+      "n_affected": 7,
+      "details": {
+        "borne_basse": 49.812,
+        "borne_haute": 108.433,
+        "pourcentage": 0.133
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "score_mathematiques",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'score_mathematiques'.",
+      "n_affected": 16,
+      "details": {
+        "borne_basse": 46.095,
+        "borne_haute": 108.295,
+        "pourcentage": 0.305
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "score_global",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'score_global'.",
+      "n_affected": 8,
+      "details": {
+        "borne_basse": 48.175,
+        "borne_haute": 108.135,
+        "pourcentage": 0.152
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "taux_maitrise_francais",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'taux_maitrise_francais'.",
+      "n_affected": 15,
+      "details": {
+        "borne_basse": 50.62,
+        "borne_haute": 96.3,
+        "pourcentage": 0.286
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "taux_maitrise_mathematiques",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'taux_maitrise_mathematiques'.",
+      "n_affected": 15,
+      "details": {
+        "borne_basse": 46.916,
+        "borne_haute": 94.026,
+        "pourcentage": 0.286
+      }
+    },
+    {
+      "code": "OUTLIER_IQR",
+      "severity": "MINEUR",
+      "variable": "variable_cible",
+      "description": "Valeurs aberrantes détectées par la méthode IQR sur 'variable_cible'.",
+      "n_affected": 8,
+      "details": {
+        "borne_basse": 48.175,
+        "borne_haute": 108.135,
+        "pourcentage": 0.152
+      }
+    },
+    {
+      "code": "ZERO_VARIANCE",
+      "severity": "IMPORTANT",
+      "variable": "nombre_classes",
+      "description": "La variable 'nombre_classes' ne prend qu'une seule valeur (variance nulle).",
+      "n_affected": 5250,
+      "details": {
+        "valeur_unique": 2.0
+      }
+    }
+  ]
+}

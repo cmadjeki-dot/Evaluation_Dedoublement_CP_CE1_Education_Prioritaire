@@ -1,0 +1,268 @@
+{
+  "dataset_name": "education_prioritaire",
+  "n_steps": 19,
+  "steps": [
+    {
+      "variable": null,
+      "action": "suppression_doublons",
+      "strategie": "aucune_action",
+      "justification": "Aucun doublon strict détecté ; aucune suppression nécessaire.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {},
+      "horodatage": "2026-09-03T08:25:09.182774+00:00"
+    },
+    {
+      "variable": "niveau",
+      "action": "correction_type",
+      "strategie": "conversion_type",
+      "justification": "Le type observé ('str') ne correspondait pas au type attendu ('category') pour cette variable ; conversion appliquée pour garantir la cohérence des traitements statistiques ultérieurs.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "type_avant": "str",
+        "type_apres": "category"
+      },
+      "horodatage": "2026-09-03T08:25:09.189605+00:00"
+    },
+    {
+      "variable": "statut",
+      "action": "correction_type",
+      "strategie": "conversion_type",
+      "justification": "Le type observé ('str') ne correspondait pas au type attendu ('category') pour cette variable ; conversion appliquée pour garantir la cohérence des traitements statistiques ultérieurs.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "type_avant": "str",
+        "type_apres": "category"
+      },
+      "horodatage": "2026-09-03T08:25:09.190703+00:00"
+    },
+    {
+      "variable": "academie",
+      "action": "correction_type",
+      "strategie": "conversion_type",
+      "justification": "Le type observé ('str') ne correspondait pas au type attendu ('category') pour cette variable ; conversion appliquée pour garantir la cohérence des traitements statistiques ultérieurs.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "type_avant": "str",
+        "type_apres": "category"
+      },
+      "horodatage": "2026-09-03T08:25:09.191619+00:00"
+    },
+    {
+      "variable": "departement",
+      "action": "correction_type",
+      "strategie": "conversion_type",
+      "justification": "Le type observé ('str') ne correspondait pas au type attendu ('category') pour cette variable ; conversion appliquée pour garantir la cohérence des traitements statistiques ultérieurs.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "type_avant": "str",
+        "type_apres": "category"
+      },
+      "horodatage": "2026-09-03T08:25:09.192548+00:00"
+    },
+    {
+      "variable": "statut",
+      "action": "harmonisation_categories",
+      "strategie": "mapping_explicite",
+      "justification": "Les modalités observées ont été harmonisées vers une nomenclature unique afin d'éviter que des variantes d'écriture (casse, orthographe, abréviations) ne soient traitées comme des catégories distinctes.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "mapping_applique": {
+          "REP": "REP",
+          "REP+": "REP+",
+          "Hors EP": "Hors EP"
+        }
+      },
+      "horodatage": "2026-09-03T08:25:09.204622+00:00"
+    },
+    {
+      "variable": "niveau",
+      "action": "harmonisation_categories",
+      "strategie": "mapping_explicite",
+      "justification": "Les modalités observées ont été harmonisées vers une nomenclature unique afin d'éviter que des variantes d'écriture (casse, orthographe, abréviations) ne soient traitées comme des catégories distinctes.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 5250,
+      "details": {
+        "mapping_applique": {
+          "CP": "CP",
+          "CE1": "CE1",
+          "CM1": "CM1",
+          "CM2": "CM2",
+          "6e": "6e"
+        }
+      },
+      "horodatage": "2026-09-03T08:25:09.211748+00:00"
+    },
+    {
+      "variable": "ips",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 160] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 160
+      },
+      "horodatage": "2026-09-03T08:25:09.212579+00:00"
+    },
+    {
+      "variable": "effectif_eleves",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [1, 60] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 1,
+        "borne_max": 60
+      },
+      "horodatage": "2026-09-03T08:25:09.213237+00:00"
+    },
+    {
+      "variable": "taille_moyenne_classe",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [1, 40] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 1,
+        "borne_max": 40
+      },
+      "horodatage": "2026-09-03T08:25:09.213875+00:00"
+    },
+    {
+      "variable": "score_francais",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.214511+00:00"
+    },
+    {
+      "variable": "score_mathematiques",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.215130+00:00"
+    },
+    {
+      "variable": "score_global",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.215743+00:00"
+    },
+    {
+      "variable": "taux_maitrise_francais",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.217696+00:00"
+    },
+    {
+      "variable": "taux_maitrise_mathematiques",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.219356+00:00"
+    },
+    {
+      "variable": "variable_cible",
+      "action": "traitement_valeurs_impossibles",
+      "strategie": "aucune_action",
+      "justification": "Aucune valeur hors des bornes plausibles [0, 100] détectée pour cette variable.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {
+        "borne_min": 0,
+        "borne_max": 100
+      },
+      "horodatage": "2026-09-03T08:25:09.220661+00:00"
+    },
+    {
+      "variable": "nombre_classes",
+      "action": "exclusion_variable",
+      "strategie": "exclusion_de_la_variable",
+      "justification": "Variance nulle confirmée par le contrôle qualité (phase 7) : la variable ne prend qu'une seule valeur sur l'ensemble des observations. Conservée dans data/interim/ pour traçabilité, retirée de data/processed/ (jeu prêt pour analyse).",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {},
+      "horodatage": "2026-09-03T08:25:09.220720+00:00"
+    },
+    {
+      "variable": "score_francais, score_mathematiques, score_global, taux_maitrise_francais, taux_maitrise_mathematiques, variable_cible, effectif_eleves, taille_moyenne_classe",
+      "action": "revue_outliers_iqr",
+      "strategie": "conservation_sans_modification",
+      "justification": "Valeurs aberrantes IQR (classées MINEUR en phase 7) toutes situées dans les plages plausibles métier. Représentent une variation naturelle et non des erreurs de saisie.",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {},
+      "horodatage": "2026-09-03T08:25:09.223464+00:00"
+    },
+    {
+      "variable": "statut, rep, rep_plus, education_prioritaire, score_global",
+      "action": "controle_coherence_croisee",
+      "strategie": "aucune_action",
+      "justification": "Aucune incohérence détectée par le contrôle qualité (phase 7).",
+      "n_lignes_avant": 5250,
+      "n_lignes_apres": 5250,
+      "n_valeurs_modifiees": 0,
+      "details": {},
+      "horodatage": "2026-09-03T08:25:09.223484+00:00"
+    }
+  ]
+}

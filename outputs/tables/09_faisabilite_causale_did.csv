@@ -1,0 +1,2 @@
+applicable,share_schools_with_status_changes,mean_treatment_cp_ce1,mean_treatment_other_levels,policy_alignment_gap,has_controls_each_year,reasons_if_not_applicable
+False,1.0,0.3352380952380952,0.3352380952380952,0.0,True,"[""Les statuts des écoles varient fortement dans le temps (changement annuel fréquent), ce qui invalide l'interprétation d'un groupe traité stable."", ""L'exposition au dédoublement n'est pas spécifique à CP/CE1 dans ces données (écart CP/CE1 vs autres niveaux trop faible).""]"

@@ -1,0 +1,13 @@
+methode,applicable,statut,justification
+psychometrie,False,NON APPLICABLE,NON APPLICABLE : pas d'items de test individuels ni de matrice item-réponse (scores agrégés uniquement).
+series_temporelles,True,APPLICABLE,APPLICABLE : 7 années observées permettent une analyse de tendance temporelle agrégée.
+segmentation,True,APPLICABLE,"APPLICABLE : les écoles peuvent être segmentées selon IPS, taille de classe et scores ; utile pour profiler des contextes d'intervention."
+clustering,True,APPLICABLE,"APPLICABLE : les écoles peuvent être segmentées selon IPS, taille de classe et scores ; utile pour profiler des contextes d'intervention."
+analyse_spatiale,True,APPLICABLE,"APPLICABLE : présence d'agrégats territoriaux (département/académie), mais pas de coordonnées fines pour l'autocorrélation spatiale."
+nlp,False,NON APPLICABLE,NON APPLICABLE : pas de corpus textuel métier exploitable pour NLP.
+causalite,False,NON APPLICABLE,"NON APPLICABLE en inférence forte : statut et exposition varient aléatoirement dans les données simulées, sans protocole d'identification crédible."
+longitudinal,True,APPLICABLE,"APPLICABLE : panel écoles répété sur 7 ans, permettant des trajectoires au niveau école."
+scoring,True,APPLICABLE,APPLICABLE : variable cible continue adaptée à un score prédictif.
+prevision,True,APPLICABLE,"APPLICABLE avec prudence : courte série (7 ans) utile pour projection simple, pas pour prévision structurelle robuste."
+survie,False,NON APPLICABLE,NON APPLICABLE : absence de temps-jusqu'à-événement et de censure.
+multiniveaux,True,APPLICABLE,APPLICABLE : structure hiérarchique (observations répétées au sein des écoles).

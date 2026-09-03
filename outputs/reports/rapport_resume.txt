@@ -1,0 +1,10 @@
+Rapport synthétique - Evaluation du dédoublement des classes
+========================================================
+Meilleur groupe observé : Hors EP - 6e (score moyen : 87.97)
+Écart moyen entre Hors EP et REP+ : 11.65 points
+Gain moyen associé à l'exposition au dédoublement : 1.74 points
+
+Résumé des résultats :
+- Le dédoublement est associé à des performances supérieures lorsque les classes restent compactes.
+- Les écarts de performance restent visibles entre les zones REP/REP+ et hors éducation prioritaire.
+- La progression temporelle est positive sur la période étudiée mais n'est pas interprétée comme un effet causal pur.

@@ -1,0 +1,98 @@
+{
+  "nom_modele": "OLS (erreurs groupées par école) — variable_cible",
+  "formule": "variable_cible ~ C(statut) + C(niveau) + ips + dedoublement",
+  "n_observations": 5250,
+  "coefficients": [
+    {
+      "index": "Intercept",
+      "coefficient": 94.70602652304007,
+      "erreur_standard": 0.5924992920213487,
+      "statistique_t": 159.8415859704144,
+      "p_value": 0.0,
+      "ic_95_basse": 93.54474924981274,
+      "ic_95_haute": 95.8673037962674
+    },
+    {
+      "index": "C(statut)[T.REP]",
+      "coefficient": -11.064153237507123,
+      "erreur_standard": 0.37099993447110313,
+      "statistique_t": -29.822520732463634,
+      "p_value": 1.994802987950038e-195,
+      "ic_95_basse": -11.791299747337204,
+      "ic_95_haute": -10.337006727677041
+    },
+    {
+      "index": "C(statut)[T.REP+]",
+      "coefficient": -15.184389150797392,
+      "erreur_standard": 0.3954597877229913,
+      "statistique_t": -38.396796898686546,
+      "p_value": 0.0,
+      "ic_95_basse": -15.959476092068309,
+      "ic_95_haute": -14.409302209526475
+    },
+    {
+      "index": "C(niveau)[T.CE1]",
+      "coefficient": -14.970457142857326,
+      "erreur_standard": 0.236902054953172,
+      "statistique_t": -63.192601456397284,
+      "p_value": 0.0,
+      "ic_95_basse": -15.43477663842907,
+      "ic_95_haute": -14.50613764728558
+    },
+    {
+      "index": "C(niveau)[T.CM1]",
+      "coefficient": -11.016285714285724,
+      "erreur_standard": 0.2170137912771635,
+      "statistique_t": -50.76306740439392,
+      "p_value": 0.0,
+      "ic_95_basse": -11.441624929337458,
+      "ic_95_haute": -10.59094649923399
+    },
+    {
+      "index": "C(niveau)[T.CM2]",
+      "coefficient": -6.078142857142838,
+      "erreur_standard": 0.21199423416032848,
+      "statistique_t": -28.67126495782908,
+      "p_value": 8.708374352215829e-181,
+      "ic_95_basse": -6.493643921027233,
+      "ic_95_haute": -5.662641793258444
+    },
+    {
+      "index": "C(niveau)[T.CP]",
+      "coefficient": -22.191819047619056,
+      "erreur_standard": 0.22430351979212376,
+      "statistique_t": -98.93656179887688,
+      "p_value": 0.0,
+      "ic_95_basse": -22.631445868017185,
+      "ic_95_haute": -21.752192227220927
+    },
+    {
+      "index": "ips",
+      "coefficient": -0.029340008744361074,
+      "erreur_standard": 0.007879531047308756,
+      "statistique_t": -3.723572959888535,
+      "p_value": 0.00019642306242646587,
+      "ic_95_basse": -0.044783605812151406,
+      "ic_95_haute": -0.013896411676570738
+    },
+    {
+      "index": "dedoublement",
+      "coefficient": 6.108483900707225,
+      "erreur_standard": 0.3472945045747639,
+      "statistique_t": 17.58877212349388,
+      "p_value": 3.0031453592003746e-69,
+      "ic_95_basse": 5.427799179712006,
+      "ic_95_haute": 6.789168621702443
+    }
+  ],
+  "metriques": {
+    "r2": 0.7030165920346809,
+    "rmse": 5.707194520578922,
+    "mae": 4.582196303051763,
+    "n": 5250
+  },
+  "diagnostics": {
+    "icc_modele_mixte_comparatif": 0.00678484092952671
+  },
+  "horodatage": "2026-09-03T00:50:35.644156+00:00"
+}

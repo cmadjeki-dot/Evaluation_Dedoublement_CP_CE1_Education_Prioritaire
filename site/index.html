@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projet Statistique — Restitution</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; color: #1f2937; }
+      .container { max-width: 1000px; margin: auto; }
+      h2 { margin-top: 2.5rem; border-bottom: 1px solid #d1d5db; padding-bottom: 0.3rem; }
+      ul { line-height: 1.6; }
+      a { color: #1d4ed8; }
+      .badge {
+        display: inline-block; padding: 0.2rem 0.6rem; border-radius: 0.4rem;
+        background: #eef2ff; color: #3730a3; font-size: 0.85rem; margin-right: 0.5rem;
+      }
+      .kpi-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem; margin-top: 1rem;
+      }
+      .kpi-card {
+        border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 1rem; background: #f9fafb;
+      }
+      .kpi-valeur { font-size: 1.6rem; font-weight: bold; color: #1d4ed8; }
+      .kpi-unite { font-size: 0.85rem; color: #6b7280; font-weight: normal; }
+      .kpi-nom { font-weight: 600; margin-top: 0.3rem; }
+      .kpi-interpretation { font-size: 0.85rem; color: #4b5563; margin-top: 0.3rem; }
+      .links-row a { margin-right: 1.2rem; }
+      .figures-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;
+      }
+      .figures-grid img { width: 100%; border: 1px solid #e5e7eb; border-radius: 0.4rem; }
+      table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+      th, td { border: 1px solid #e5e7eb; padding: 0.3rem 0.5rem; text-align: left; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Projet de statistique publique — Restitution</h1>
+      <p>Effet du dédoublement des classes de CP/CE1 en éducation prioritaire sur les performances scolaires, suivi à court terme (CP/CE1), moyen terme (CM1/CM2) et long terme (entrée en 6e). Les données utilisées sont simulées de manière reproductible (seed fixe) : les résultats illustrent la démarche méthodologique et ne constituent pas des statistiques officielles.</p>
+      <p class="links-row">
+        <a href="https://github.com/votre-organisation/evaluation-dedoublement-cp-ce1">Dépôt GitHub</a>
+        <a href="https://votre-espace-streamlit.streamlit.app">Dashboard interactif (Streamlit)</a>
+      </p>
+
+      <h2>Indicateurs clés (KPI)</h2>
+      <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-valeur">78.2 <span class="kpi-unite">points sur 100</span></div>
+        <div class="kpi-nom">Score global moyen</div>
+        <div class="kpi-interpretation">Niveau moyen de performance globale du système observé.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">-10.2 <span class="kpi-unite">points sur 100</span></div>
+        <div class="kpi-nom">Écart REP+ vs Hors EP</div>
+        <div class="kpi-interpretation">Mesure brute de l&#x27;inégalité de performance entre extrêmes de statut.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">0.811 <span class="kpi-unite">points/an</span></div>
+        <div class="kpi-nom">Tendance annuelle Hors EP</div>
+        <div class="kpi-interpretation">Variation moyenne annuelle du score Hors EP.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">0.836 <span class="kpi-unite">points/an</span></div>
+        <div class="kpi-nom">Tendance annuelle REP+</div>
+        <div class="kpi-interpretation">Variation moyenne annuelle du score REP+.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">-1.18 <span class="kpi-unite">points sur 100</span></div>
+        <div class="kpi-nom">Évolution de l&#x27;écart REP+ vs Hors EP (2017→2023)</div>
+        <div class="kpi-interpretation">Négatif = creusement de l&#x27;écart en défaveur de REP+.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">0.335 <span class="kpi-unite">proportion (0-1)</span></div>
+        <div class="kpi-nom">Part d&#x27;observations dédoublées</div>
+        <div class="kpi-interpretation">Mesure l&#x27;intensité d&#x27;exposition au dédoublement dans le panel.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">5.71 <span class="kpi-unite">points sur 100</span></div>
+        <div class="kpi-nom">RMSE modèle explicatif OLS</div>
+        <div class="kpi-interpretation">Ordre de grandeur de l&#x27;erreur moyenne de prédiction du modèle.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">0.703 <span class="kpi-unite">proportion (0-1)</span></div>
+        <div class="kpi-nom">R² modèle explicatif OLS</div>
+        <div class="kpi-interpretation">Capacité explicative globale des variables retenues.</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valeur">0.00679 <span class="kpi-unite">proportion (0-1)</span></div>
+        <div class="kpi-nom">ICC effet école (modèle mixte)</div>
+        <div class="kpi-interpretation">Faible valeur = faible surcroît d&#x27;information école après contrôles.</div>
+      </div>
+      </div>
+
+      <h2>Méthodologie</h2>
+      <ol>
+        <li>Cadrage métier et statistique (contexte, problématique, population, variable cible).</li>
+        <li>Acquisition des données et description initiale.</li>
+        <li>Contrôle qualité (doublons, valeurs manquantes, anomalies, outliers).</li>
+        <li>Nettoyage et préparation (imputation justifiée, journal de transformation).</li>
+        <li>Analyse descriptive (comparaisons par statut, tableaux croisés, intervalles de confiance).</li>
+        <li>Modélisation (OLS, modèle à effets mixtes) et analyses spécialisées.</li>
+        <li>Analyses longitudinale et causale (différence-de-différences, avec évaluation de faisabilité).</li>
+        <li>Indicateurs décisionnels et restitution non technique.</li>
+      </ol>
+
+      <h2>Rapport final</h2>
+      <ul>
+        <li><a href="reports/rapport_final.md">rapport_final.md</a></li>
+      </ul>
+
+      <h2>Figures (12)</h2>
+      <div class="figures-grid">
+        <div><img src="figures/05_distribution_variable_cible.png" alt="05_distribution_variable_cible.png" loading="lazy"><p>05_distribution_variable_cible.png</p></div>
+        <div><img src="figures/05_moyenne_par_statut.png" alt="05_moyenne_par_statut.png" loading="lazy"><p>05_moyenne_par_statut.png</p></div>
+        <div><img src="figures/05_score_par_niveau_statut.png" alt="05_score_par_niveau_statut.png" loading="lazy"><p>05_score_par_niveau_statut.png</p></div>
+        <div><img src="figures/05_score_vs_ips.png" alt="05_score_vs_ips.png" loading="lazy"><p>05_score_vs_ips.png</p></div>
+        <div><img src="figures/06_diagnostics_ols.png" alt="06_diagnostics_ols.png" loading="lazy"><p>06_diagnostics_ols.png</p></div>
+        <div><img src="figures/07_segmentation_ecoles.png" alt="07_segmentation_ecoles.png" loading="lazy"><p>07_segmentation_ecoles.png</p></div>
+        <div><img src="figures/08_distribution_delta_ecoles.png" alt="08_distribution_delta_ecoles.png" loading="lazy"><p>08_distribution_delta_ecoles.png</p></div>
+        <div><img src="figures/08_ecart_repplus_horsep_temps.png" alt="08_ecart_repplus_horsep_temps.png" loading="lazy"><p>08_ecart_repplus_horsep_temps.png</p></div>
+        <div><img src="figures/08_tendance_temporelle_statut.png" alt="08_tendance_temporelle_statut.png" loading="lazy"><p>08_tendance_temporelle_statut.png</p></div>
+        <div><img src="figures/score_par_annee.png" alt="score_par_annee.png" loading="lazy"><p>score_par_annee.png</p></div>
+        <div><img src="figures/score_par_groupe.png" alt="score_par_groupe.png" loading="lazy"><p>score_par_groupe.png</p></div>
+        <div><img src="figures/score_par_taille_classe.png" alt="score_par_taille_classe.png" loading="lazy"><p>score_par_taille_classe.png</p></div>
+      </div>
+
+      <h2>Tableaux (25)</h2>
+      <ul>
+      <li><a href="tables/05_comparaison_dedoublement.csv">05_comparaison_dedoublement.csv</a></li>
+      <li><a href="tables/05_comparaison_statut.csv">05_comparaison_statut.csv</a></li>
+      <li><a href="tables/05_crosstab_statut_niveau_moyenne.csv">05_crosstab_statut_niveau_moyenne.csv</a></li>
+      <li><a href="tables/05_distribution_variable_cible.csv">05_distribution_variable_cible.csv</a></li>
+      <li><a href="tables/05_effectifs_niveau_statut.csv">05_effectifs_niveau_statut.csv</a></li>
+      <li><a href="tables/05_intervalle_confiance_variable_cible.csv">05_intervalle_confiance_variable_cible.csv</a></li>
+      <li><a href="tables/05_stats_globales_variable_cible.csv">05_stats_globales_variable_cible.csv</a></li>
+      <li><a href="tables/05_tests_difference_statut.csv">05_tests_difference_statut.csv</a></li>
+      <li><a href="tables/06_coefficients_mixte.csv">06_coefficients_mixte.csv</a></li>
+      <li><a href="tables/06_coefficients_ols.csv">06_coefficients_ols.csv</a></li>
+      <li><a href="tables/07_applicabilite_methodes_specialisees.csv">07_applicabilite_methodes_specialisees.csv</a></li>
+      <li><a href="tables/07_centres_clusters.csv">07_centres_clusters.csv</a></li>
+      <li><a href="tables/07_clusters_profils_ecoles.csv">07_clusters_profils_ecoles.csv</a></li>
+      <li><a href="tables/08_distribution_delta_ecoles_2017_2023.csv">08_distribution_delta_ecoles_2017_2023.csv</a></li>
+      <li><a href="tables/08_ecart_repplus_vs_horsep_temps.csv">08_ecart_repplus_vs_horsep_temps.csv</a></li>
+      <li><a href="tables/08_panel_ecole_annee.csv">08_panel_ecole_annee.csv</a></li>
+      <li><a href="tables/08_serie_temporelle_score_par_statut.csv">08_serie_temporelle_score_par_statut.csv</a></li>
+      <li><a href="tables/08_tendance_lineaire_par_statut.csv">08_tendance_lineaire_par_statut.csv</a></li>
+      <li><a href="tables/09_association_ols_coefficients.csv">09_association_ols_coefficients.csv</a></li>
+      <li><a href="tables/09_correlation_matrix.csv">09_correlation_matrix.csv</a></li>
+      <li><a href="tables/09_faisabilite_causale_did.csv">09_faisabilite_causale_did.csv</a></li>
+      <li><a href="tables/09_prediction_metrics.csv">09_prediction_metrics.csv</a></li>
+      <li><a href="tables/indicateurs_decisionnels.csv">indicateurs_decisionnels.csv</a></li>
+      <li><a href="tables/score_par_annee.csv">score_par_annee.csv</a></li>
+      <li><a href="tables/score_par_groupe.csv">score_par_groupe.csv</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
