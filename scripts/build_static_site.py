@@ -39,7 +39,9 @@ INDICATEURS_PATH = TABLES_DIR / "indicateurs_decisionnels.csv"
 
 # Liens externes de restitution publique. À remplacer par les URLs réelles
 # une fois le dépôt GitHub et le dashboard hébergé publiquement disponibles.
-GITHUB_REPO_URL = "https://github.com/votre-organisation/evaluation-dedoublement-cp-ce1"
+GITHUB_REPO_URL = (
+    "https://github.com/cmadjeki-dot/Evaluation_Dedoublement_CP_CE1_Education_Prioritaire"
+)
 DASHBOARD_PUBLIC_URL = "https://votre-espace-streamlit.streamlit.app"
 
 CONTEXTE_PROJET = (
