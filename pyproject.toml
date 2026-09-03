@@ -3,6 +3,7 @@ name = "evaluation_dedoublement_cp_ce1_education_prioritaire"
 version = "0.1.0"
 description = "Projet statistique et data science pour l'analyse du dédoublement des classes en éducation prioritaire"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.14"
 dependencies = [
     "pandas>=2.2.0",
