@@ -7,7 +7,15 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from src.utils.paths import DATA_DIR, FIGURES_DIR, OUTPUT_DIR, REPORTS_DIR, TABLES_DIR, ensure_directory, ensure_project_directories
+from src.utils.paths import (
+    DATA_DIR,
+    FIGURES_DIR,
+    OUTPUT_DIR,
+    REPORTS_DIR,
+    TABLES_DIR,
+    ensure_directory,
+    ensure_project_directories,
+)
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -22,7 +30,10 @@ def generate_synthetic_dataset(path: Path) -> pd.DataFrame:
     years = range(2018, 2025)
     school_ids = range(1, 181)
     academies = ["Paris", "Lyon", "Lille", "Bordeaux", "Nantes"]
-    departments = ["Ain", "Bas-Rhin", "Bouches-du-Rhône", "Gironde", "Hérault", "Loire", "Maine-et-Loire", "Moselle", "Nord", "Paris", "Puy-de-Dôme", "Saône-et-Loire"]
+    departments = [
+        "Ain", "Bas-Rhin", "Bouches-du-Rhône", "Gironde", "Hérault", "Loire",
+        "Maine-et-Loire", "Moselle", "Nord", "Paris", "Puy-de-Dôme", "Saône-et-Loire",
+    ]
 
     rows = []
     for year in years:
@@ -47,7 +58,10 @@ def generate_synthetic_dataset(path: Path) -> pd.DataFrame:
                     grade_trend = {"CP": 0, "CE1": 2, "CM1": 5, "CM2": 7, "6e": 9}[grade]
                     exposure_gain = 9 if exposition_dedoublement else 0
                     size_penalty = max(0, class_size - 18) * 0.9
-                    score = baseline + discipline_bonus + rep_bonus + year_trend + grade_trend + exposure_gain - size_penalty + ips * 0.12 + rng.normal(0, 4.5)
+                    score = (
+                        baseline + discipline_bonus + rep_bonus + year_trend + grade_trend
+                        + exposure_gain - size_penalty + ips * 0.12 + rng.normal(0, 4.5)
+                    )
                     score = max(0, min(100, score))
                     mastery_rate = min(100, max(0, 0.68 * score + 15 + rng.normal(0, 5)))
 
@@ -84,7 +98,11 @@ def load_or_generate_data(path: Path) -> pd.DataFrame:
 def build_group_summary(df: pd.DataFrame) -> pd.DataFrame:
     return (
         df.groupby(["rep_status", "niveau"], as_index=False)
-        .agg(score_moyen=("score", "mean"), taille_classe_moyenne=("taille_classe", "mean"), taux_maitrise_moyen=("taux_maitrise", "mean"))
+        .agg(
+            score_moyen=("score", "mean"),
+            taille_classe_moyenne=("taille_classe", "mean"),
+            taux_maitrise_moyen=("taux_maitrise", "mean"),
+        )
         .sort_values(["rep_status", "niveau"], ascending=[True, True])
         .reset_index(drop=True)
     )
@@ -163,14 +181,18 @@ def write_report(summary: pd.DataFrame, trend: pd.DataFrame, exposure_summary: p
     lines = [
         "Rapport synthétique - Evaluation du dédoublement des classes",
         "========================================================",
-        f"Meilleur groupe observé : {best_group['rep_status']} - {best_group['niveau']} (score moyen : {best_group['score_moyen']:.2f})",
+        f"Meilleur groupe observé : {best_group['rep_status']} - {best_group['niveau']} "
+        f"(score moyen : {best_group['score_moyen']:.2f})",
         f"Écart moyen entre Hors EP et REP+ : {difference:.2f} points",
         f"Gain moyen associé à l'exposition au dédoublement : {exposure_gain:.2f} points",
         "",
         "Résumé des résultats :",
         "- Le dédoublement est associé à des performances supérieures lorsque les classes restent compactes.",
         "- Les écarts de performance restent visibles entre les zones REP/REP+ et hors éducation prioritaire.",
-        "- La progression temporelle est positive sur la période étudiée mais n'est pas interprétée comme un effet causal pur.",
+        (
+            "- La progression temporelle est positive sur la période étudiée mais n'est pas "
+            "interprétée comme un effet causal pur."
+        ),
     ]
     output_path.write_text("\n".join(lines), encoding="utf-8")
 

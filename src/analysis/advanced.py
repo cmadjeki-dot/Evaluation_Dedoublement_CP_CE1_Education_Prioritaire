@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Outils d'analyses avancées (spécialisée, longitudinale, causalité faisable/non faisable)."""
+
+from __future__ import annotations
 
 from dataclasses import dataclass
 
@@ -45,7 +45,6 @@ def evaluate_specialized_methods(df: pd.DataFrame) -> pd.DataFrame:
     has_text = any(str(df[col].dtype) == "object" and col not in {"source", "source_url"} for col in df.columns)
     has_geo = {"academie", "departement"}.issubset(df.columns)
     has_hierarchy = "ecole_id" in df.columns and df.groupby("ecole_id").size().min() > 1
-    has_binary_target = set(pd.Series(df["variable_cible"]).dropna().unique()).issubset({0, 1})
 
     for method in methods:
         applicable = False

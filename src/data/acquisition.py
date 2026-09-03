@@ -13,10 +13,16 @@ RAW_DATASET_NAME = "donnees_brutes_education_prioritaire.csv"
 RAW_DATA_DIR = DATA_DIR
 
 DATA_SOURCE_DESCRIPTION = {
-    "provenance": "Données de référence issues de la logique Open Data DEPP autour de la taille des classes, des évaluations CP/CE1/CM1/CM2/6e et des indicateurs territoriaux.",
+    "provenance": (
+        "Données de référence issues de la logique Open Data DEPP autour de la taille des classes, "
+        "des évaluations CP/CE1/CM1/CM2/6e et des indicateurs territoriaux."
+    ),
     "mode": "simulation reproductible si aucune source locale n'est fournie",
     "objectif": "Conserver une copie brute immuable dans data/raw avant tout nettoyage ou analyse",
-    "url_reference": "https://www.education.gouv.fr/depp/taille-des-classes-du-premier-degre-dans-le-secteur-public-la-baisse-s-observe-au-dela-des-classes-12263",
+    "url_reference": (
+        "https://www.education.gouv.fr/depp/taille-des-classes-du-premier-degre-dans-le-secteur-public-"
+        "la-baisse-s-observe-au-dela-des-classes-12263"
+    ),
 }
 
 
@@ -70,7 +76,10 @@ def build_synthetic_open_data() -> pd.DataFrame:
                 exposure_gain = 8 if dedoublement and niveau in {"CP", "CE1"} else 0
                 year_trend = (year - 2017) * 0.8
                 size_penalty = max(0.0, (taille_moyenne_classe - 18) * 0.9)
-                score_francais = base_score + rep_bonus + level_bonus + exposure_gain + year_trend - size_penalty + rng.normal(0, 4.5)
+                score_francais = (
+                    base_score + rep_bonus + level_bonus + exposure_gain
+                    + year_trend - size_penalty + rng.normal(0, 4.5)
+                )
                 score_mathematiques = score_francais - 2 + rng.normal(0, 4.0)
                 score_francais = float(np.clip(score_francais, 0, 100))
                 score_mathematiques = float(np.clip(score_mathematiques, 0, 100))

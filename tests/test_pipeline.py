@@ -1,8 +1,6 @@
-from pathlib import Path
 
-import pandas as pd
 
-from src.pipeline import generate_synthetic_dataset, build_group_summary
+from src.pipeline import build_group_summary, generate_synthetic_dataset
 
 
 def test_generate_synthetic_dataset(tmp_path):

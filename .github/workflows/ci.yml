@@ -1,22 +1,123 @@
-﻿name: project-ci
+name: project-ci
+
+# ---------------------------------------------------------------------------
+# CI (validation) : s'exécute sur chaque push et chaque pull request.
+# Elle ne publie jamais rien : elle vérifie uniquement que le projet est sain
+# (dépendances installables, tests, qualité de code, scripts critiques,
+# reconstruction du site à titre de validation).
+#
+# CD (publication) : job séparé, déclenché uniquement sur un push vers la
+# branche par défaut (main), et seulement si le job CI a réussi
+# (dépendance `needs: quality`). Il republie le site statique sur GitHub
+# Pages et dépose les artefacts (figures, tableaux, rapport, site) en tant
+# qu'artefact GitHub Actions téléchargeable.
+# ---------------------------------------------------------------------------
 
 on:
   push:
     branches: [ main, master ]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
+  # -------------------------------------------------------------------------
+  # JOB CI : VALIDATION
+  # -------------------------------------------------------------------------
   quality:
+    name: CI - Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Installation de Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.14'
-      - name: Install dependencies
+          cache: 'pip'
+
+      - name: Installation des dépendances
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
-      - name: Run tests
+
+      - name: Tests unitaires et fonctionnels (pytest)
+        run: python -m pytest -q
+
+      - name: Analyse de qualité de code (Ruff)
+        run: python -m ruff check src dashboard scripts tests
+
+      - name: Vérification des scripts critiques (import + exécution)
         run: |
-          python -m pytest -q
+          python -c "import scripts.generate_figures, scripts.generate_tables, scripts.generate_report, scripts.build_static_site, scripts.run_pipeline"
+          python scripts/generate_figures.py
+          python scripts/generate_tables.py
+          python scripts/generate_report.py
+
+      - name: Reconstruction du site statique (validation uniquement)
+        run: python scripts/build_static_site.py
+
+      - name: Vérification de la présence des artefacts attendus
+        run: |
+          test -s site/index.html
+          test -d outputs/figures && [ "$(ls -A outputs/figures)" ]
+          test -d outputs/tables && [ "$(ls -A outputs/tables)" ]
+          test -d outputs/reports && [ "$(ls -A outputs/reports)" ]
+
+      - name: Archivage temporaire du site pour le job de publication
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: |
+            site/
+            outputs/figures/
+            outputs/tables/
+            outputs/reports/
+          retention-days: 7
+
+  # -------------------------------------------------------------------------
+  # JOB CD : PUBLICATION
+  # Ne se déclenche que sur un push vers main, et uniquement si `quality`
+  # (la CI) a réussi. Aucune pull request ne peut déclencher ce job.
+  # -------------------------------------------------------------------------
+  publish:
+    name: CD - Publication
+    needs: quality
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupération du site construit par la CI
+        uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: site-build
+
+      - name: Dépôt des artefacts (figures, tableaux, rapports, site) en téléchargement
+        uses: actions/upload-artifact@v4
+        with:
+          name: artefacts-projet
+          path: |
+            site-build/site/
+            site-build/outputs/figures/
+            site-build/outputs/tables/
+            site-build/outputs/reports/
+          retention-days: 30
+
+      - name: Préparation du site pour GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site-build/site
+
+      - name: Déploiement sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

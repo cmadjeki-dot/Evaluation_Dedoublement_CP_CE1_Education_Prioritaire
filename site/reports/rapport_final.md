@@ -1,6 +1,6 @@
 # Rapport final
 
-*Document généré automatiquement le 2026-09-03 10:25 par `scripts/generate_report.py`, à partir des tables réellement calculées dans `outputs/tables/`.*
+*Document généré automatiquement le 2026-09-03 12:25 par `scripts/generate_report.py`, à partir des tables réellement calculées dans `outputs/tables/`.*
 
 ## Objectif
 Ce document centralise la synthèse méthodologique et les résultats clés du projet portant sur l'effet du dédoublement des classes de CP/CE1 en éducation prioritaire sur les performances scolaires.

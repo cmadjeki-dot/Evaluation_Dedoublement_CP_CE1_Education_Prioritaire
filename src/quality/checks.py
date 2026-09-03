@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Fonctions réutilisables de contrôle qualité pour le projet.
 
 Ce module détecte des problèmes de qualité de données sans jamais corriger
@@ -8,6 +6,8 @@ données décrivant précisément ce qui a été détecté, afin qu'une décisio
 correction explicite et tracée puisse être prise plus tard (notebook de
 nettoyage).
 """
+
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -224,7 +224,9 @@ def check_type_consistency(df: pd.DataFrame, expected_types: dict[str, str] | No
     return issues
 
 
-def check_unexpected_categories(df: pd.DataFrame, expected_categories: dict[str, set[str]] | None = None) -> list[QualityIssue]:
+def check_unexpected_categories(
+    df: pd.DataFrame, expected_categories: dict[str, set[str]] | None = None
+) -> list[QualityIssue]:
     """Détecte les modalités inattendues pour les variables catégorielles connues."""
     expected_categories = expected_categories or EXPECTED_CATEGORIES
     issues: list[QualityIssue] = []
@@ -243,13 +245,18 @@ def check_unexpected_categories(df: pd.DataFrame, expected_categories: dict[str,
                     variable=column,
                     description=f"Modalités non attendues détectées sur '{column}'.",
                     n_affected=n_affected,
-                    details={"modalites_inattendues": sorted(unexpected), "modalites_attendues": sorted(allowed_values)},
+                    details={
+                        "modalites_inattendues": sorted(unexpected),
+                        "modalites_attendues": sorted(allowed_values),
+                    },
                 )
             )
     return issues
 
 
-def check_impossible_values(df: pd.DataFrame, plausible_ranges: dict[str, tuple[float, float]] | None = None) -> list[QualityIssue]:
+def check_impossible_values(
+    df: pd.DataFrame, plausible_ranges: dict[str, tuple[float, float]] | None = None
+) -> list[QualityIssue]:
     """Détecte les valeurs numériquement impossibles au regard de bornes métier."""
     plausible_ranges = plausible_ranges or PLAUSIBLE_RANGES
     issues: list[QualityIssue] = []
@@ -396,7 +403,9 @@ def check_cross_variable_consistency(df: pd.DataFrame) -> list[QualityIssue]:
                     code="INCONSISTENT_EDUCATION_PRIORITAIRE_FLAG",
                     severity=SEVERITY_CRITIQUE,
                     variable="education_prioritaire, statut",
-                    description="L'indicateur 'education_prioritaire' n'est pas cohérent avec le statut REP/REP+/Hors EP.",
+                    description=(
+                        "L'indicateur 'education_prioritaire' n'est pas cohérent avec le statut REP/REP+/Hors EP."
+                    ),
                     n_affected=n_affected,
                     details={},
                 )
@@ -412,7 +421,10 @@ def check_cross_variable_consistency(df: pd.DataFrame) -> list[QualityIssue]:
                     code="INCONSISTENT_CLASS_SIZE",
                     severity=SEVERITY_IMPORTANT,
                     variable="effectif_eleves, nombre_classes",
-                    description="Taille de classe implicite (effectif / nombre de classes) anormalement élevée (> 45 élèves).",
+                    description=(
+                        "Taille de classe implicite (effectif / nombre de classes) anormalement élevée "
+                        "(> 45 élèves)."
+                    ),
                     n_affected=n_affected,
                     details={},
                 )
@@ -428,7 +440,9 @@ def check_cross_variable_consistency(df: pd.DataFrame) -> list[QualityIssue]:
                     code="INCONSISTENT_SCORE_GLOBAL",
                     severity=SEVERITY_IMPORTANT,
                     variable="score_global, score_francais, score_mathematiques",
-                    description="Le score global ne correspond pas à la moyenne des scores par discipline (écart > 0.5 point).",
+                    description=(
+                        "Le score global ne correspond pas à la moyenne des scores par discipline (écart > 0.5 point)."
+                    ),
                     n_affected=n_affected,
                     details={},
                 )
@@ -509,7 +523,10 @@ def render_report_markdown(report: QualityReport, dataset_path: Path | str | Non
             lines.append("")
             for issue in issues:
                 variable_txt = f" (variable : {issue.variable})" if issue.variable else ""
-                lines.append(f"- **{issue.code}**{variable_txt} — {issue.description} — observations concernées : {issue.n_affected}")
+                lines.append(
+                    f"- **{issue.code}**{variable_txt} — {issue.description} "
+                    f"— observations concernées : {issue.n_affected}"
+                )
                 if issue.details:
                     for key, value in issue.details.items():
                         lines.append(f"    - {key} : {value}")

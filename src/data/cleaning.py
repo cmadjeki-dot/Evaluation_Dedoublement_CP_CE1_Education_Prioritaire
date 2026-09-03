@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Fonctions réutilisables de nettoyage et de traitement des données.
 
 Contrairement à `src/quality`, qui se contente de détecter des problèmes,
@@ -12,10 +10,12 @@ défaut : la stratégie doit être choisie explicitement par l'appelant (noteboo
 de nettoyage), au cas par cas, variable par variable.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -332,7 +332,9 @@ def impute_missing_values(
                     variable=column,
                     action="traitement_valeurs_manquantes",
                     strategie="aucune_action",
-                    justification="Aucune valeur manquante détectée pour cette variable ; aucune imputation nécessaire.",
+                    justification=(
+                        "Aucune valeur manquante détectée pour cette variable ; aucune imputation nécessaire."
+                    ),
                     n_lignes_avant=n_before,
                     n_lignes_apres=n_before,
                     n_valeurs_modifiees=0,

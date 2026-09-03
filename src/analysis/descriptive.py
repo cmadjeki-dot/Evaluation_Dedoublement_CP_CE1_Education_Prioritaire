@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Fonctions réutilisables d'analyse descriptive.
 
 Ce module fournit des fonctions génériques (effectifs, tendance centrale,
@@ -10,6 +8,8 @@ Aucune fonction ne produit d'interprétation causale : ce module se limite à la
 description statistique. Les décisions d'interprétation restent documentées
 dans le notebook.
 """
+
+from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
